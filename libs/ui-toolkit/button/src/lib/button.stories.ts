@@ -8,7 +8,7 @@ const modMetadata = moduleMetadata({
 
 storiesOf('Button', module)
   .addDecorator(modMetadata)
-  .add('Green enabled button', () => ({
+  .add('All enabled button', () => ({
     props: {
       onClick: () => {
         action('log')('That was a good click');
@@ -28,5 +28,42 @@ storiesOf('Button', module)
         Please, go away!
       </mag-button>
     `
+  }))
+  .add('Primary buttons', () => ({
+    template: `
+      <div class="grid">
+        <div>
+          <mag-button btnType="green">Label</mag-button>
+          <p>Normal</p>
+        </div>
+        <div>
+          <mag-button btnType="green" size="sm">Label</mag-button>
+          <p>Small</p>
+        </div>
+        <div>
+          <mag-button btnType="green" size="lg">Label</mag-button>
+          <p>Big</p>
+        </div>
+      </div>
+    `,
+    styles: [`
+    .grid {
+      display: grid;
+      grid-gap: 10px;
+      background: white;
+      grid-template-areas: "btn btn-sm btn-lg";
+      width: 100%;
+    }
+    .grid > div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+      padding: 20px;
+    }
+    .grid p {
+      margin-bottom: 5px;
+    }
+    `]
   }));
-  
